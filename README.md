@@ -16,11 +16,15 @@
   - Add `export WORKON_HOME=$HOME/.virtualenvs` and `source path_from_find_name` to shell startup file, such as your .bash_profile.
   - Reload your profile e.g. `source `~/.bash_profile`
   - Find your python path using `which python`. Use this below to create your virtual environment
-  - `mkvirtualenv --python=path_from_which_python name_for_virtualenv`
+  - `mkvirtualenv --python=path_from_which_python name_for_virtualenv`, e.g. pom_slackbot
+  - open $VIRTUAL_ENV/bin/postactivate in your favorite text editor e.g. `sublime $VIRTUAL_ENV/bin/postactivate`
+  - Add this line and save: `cd ~/path_to_project`, where path_to_project should lead to your project repo directory
+  - Start your virtual environment using workon, e.g. `workon pom_slackbot`
 1. Otherwise `conda create -n name_for_virtualenv python=x.x`
   - `name_for_virtualenv` is the name you would like to call your virtual environment, e.g. pom_slackbot
   - `x.x` denotes the version of Python to use, e.g. 3.4.3 
   - if you have any troubles, check out this [eResearch cookbook](http://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
+  - Start your virtual environment using `source activate pom_slackbot`
 - Good resource that describes the difference and incompatibilities on [astropy:docs](http://docs.astropy.org/en/stable/development/workflow/virtual_pythons.html)
 
 ## Setting Up File Structure
@@ -38,6 +42,14 @@
 1. Flask: `pip install Flask`
 1. Add dependencies to requirements.txt
   - `pip freeze > requirements.txt`
+
+## Setting Up Environment Variables
+1. Create a new file `touch config.py`
+1. Add your desired configuration settings
+1. If you are using conda, simply `export APP_SETTINGS="config.DevelopmentConfig"` from CLI
+1. Otherwise add the above line to you postactivate file 
+  - open $VIRTUAL_ENV/bin/postactivate in your favorite text editor e.g. `sublime $VIRTUAL_ENV/bin/postactivate`
+  - cd ~/path/to/your/project
 
 ## If Deploying To Heroku
 1. Gunicorn: `pip install gunicorn`
