@@ -1,0 +1,10 @@
+Flask==0.10.1
+gunicorn==19.3.0
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+six==1.10.0
+slackclient==0.16
+websocket-client==0.34.0
+Werkzeug==0.10.4
+wheel==0.26.0
